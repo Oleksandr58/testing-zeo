@@ -88,12 +88,13 @@ gulp.task('img', function(){
 	.pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('watch', ['browser-sync', 'scss', 'js'], function() {
+gulp.task('watch', ['browser-sync', 'clean', 'scss', 'js'], function() {
+	gulp.watch('app/icons/*.svg', ['svg-sprite']);
 	gulp.watch('app/scss/**/*.scss', ['scss']);
 	gulp.watch('app/js/main.js', ['js']);
 });
 
-gulp.task('build', ['clean', 'scss', 'img', 'js'], function() {
+gulp.task('build', ['clean',  'scss', 'img', 'js'], function() {
 	var buildIndex = gulp.src('app/index.html')
 	.pipe(gulp.dest('dist'));
 	
