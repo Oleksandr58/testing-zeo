@@ -107,7 +107,7 @@ gulp.task('build', ['clean',  'scss', 'img', 'js'], function() {
 	var buildSvgSprite = gulp.src('app/svg/sprite.svg' )
 	.pipe(gulp.dest('dist/svg'));
 	
-	var buildFavicon = gulp.src('app/title.js' )
+	var buildFavicon = gulp.src('app/title.png' )
 	.pipe(gulp.dest('dist'));
 });
 
