@@ -103,6 +103,12 @@ gulp.task('build', ['clean',  'scss', 'img', 'js'], function() {
 	
 	var buildJS = gulp.src('app/js/main.min.js' )
 	.pipe(gulp.dest('dist/js'));
+	
+	var buildSvgSprite = gulp.src('app/svg/sprite.js' )
+	.pipe(gulp.dest('dist/svg'));
+	
+	var buildFavicon = gulp.src('app/title.js' )
+	.pipe(gulp.dest('dist'));
 });
 
 

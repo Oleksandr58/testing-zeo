@@ -68,7 +68,7 @@
     width: $btnSize;
     height: $btnSize/4;
     transform: translateZ($baseSize*0.15);
-    transition: all $transTime;
+    transition: all $animationTimeBtn;
     text-align: center;
     text-shadow: 0 0 $baseSize/10 $logoColor, 0 $baseSize/-100 0 ($btnColor - #222), 0 $baseSize/100 0 ($logoColor + #333);
     -webkit-user-select: none;
@@ -85,7 +85,7 @@
     bottom: 0;
     transform: rotateX(-70deg);
     transform-origin: 0 100%;
-    transition: all $transTime;
+    transition: all $animationTimeBtn;
     width: $btnSize;
     height: $btnSize * 0.18;
     z-index: 1;
@@ -103,3 +103,168 @@
   }
 }
   
+
+/* * * * * * * * * * *
+        MODAL
+* * * * * * * * * * */
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  transition: 1s;
+
+
+  &.active {
+    display: block;
+    animation: showModalContainer .5s;
+
+    .modal__container {
+      transform: skew(10deg) translate(-50%, -50%) rotateY(-90deg);
+    }
+  }
+
+
+  &__container {
+    background-color: white;
+    width: 580px;
+    height: 390px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    animation: showModal .5s;
+    animation-delay: .4s;
+    animation-fill-mode: forwards;  
+  }
+
+
+  &__content {
+    text-align: center;
+    width: 440px;
+    margin: 0 auto;
+  }
+
+
+  &__svg {
+    fill: $primaryColor;
+    width: 94px;
+    height: 100px;
+    margin: 48px 0;
+  }
+
+
+  &__title {
+    font-family: $primary-font;
+    font-size: 24px;
+    line-height: 31px;
+    color: #3d424d;
+    margin-bottom: 48px;
+  }
+
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  &__btn {
+    padding: 12px;
+    width: 205px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: capitalize;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 2px solid #d7deea;
+    color: $secondaryColor;
+    transition: transform $animationTime;
+
+
+    &--remove {
+      background-color: $primaryColor;
+      border: 2px solid $primaryColor;
+      box-shadow: 0px 2px 3.84px 0.16px rgba(51, 51, 51, 0.12);
+      color: white;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+
+.close {
+  border: 2px solid $secondaryColor;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  cursor: pointer;
+
+
+  &::before, &::after {
+    content: '';
+    height: 2px;
+    width: 18px;
+    border-radius: 2px;
+    background-color: $secondaryColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  
+  &:hover {
+    &::before {
+      animation: shakeLeftCloseBtn $animationTime;
+    }
+
+
+    &::after {
+      animation: shakeRightCloseBtn $animationTime;
+    }
+  }
+}
+
+
+@keyframes showModal {
+  0% {transform: translate(-50%, -50%) rotateY(-90deg);}
+  100% {transform: translate(-50%, -50%);}
+}
+
+@keyframes showModalContainer {
+  0% {transform: translateY(-100%); }
+  100% {transform: translateY(0); }
+}
+
+@keyframes shakeLeftCloseBtn {
+  0% {transform: translate(-50%, -50%) rotate(-45deg);}
+  50% {transform: translate(-50%, -50%) rotate(-30deg);}
+  100% {transform: translate(-50%, -50%) rotate(-45deg);}
+}
+
+
+@keyframes shakeRightCloseBtn {
+  0% {transform: translate(-50%, -50%) rotate(45deg);}
+  50% {transform: translate(-50%, -50%) rotate(30deg);}
+  100% {transform: translate(-50%, -50%) rotate(45deg);}
+}
