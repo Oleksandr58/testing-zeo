@@ -1,93 +1,105 @@
-
-
-body {
-  background: rgb(39, 40, 34);
-  height: 100vh;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
-  align-items: center;
-  -webkit-align-items: center;
-  margin: 0;
-  perspective: 600px;
-  -webkit-perspective: 600px;
+.container {
+  text-align: center;
 }
 
-/* Button container */
-.container {
+
+/* * * * * * * * * * *
+    CUSTOM BUTTON
+* * * * * * * * * * */
+.btn {
   width: $baseSize;
-  height: $baseSize;
+  height: $baseSize/3;
   transform: rotateX(40deg);
   transform-style: preserve-3d;
-}
-  
-/* Light gray bottom part */
-.base {
-  background: $baseColor;
-  border-radius: $btnRadius;
-  box-shadow: 0 $baseSize/-40 0px ($baseColor - #444) inset;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
-  align-items: center;
-  -webkit-align-items: center;
-  position: relative;
-  transform-style: preserve-3d;
-  width: $baseSize;
-  height: $baseSize;
-}
+  margin: 20px auto;
+  font-family: $primary-font;
 
-/* Clickable area containing both dark gray parts of button*/
-.btn-wrapper {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  -webkit-appearance: none;
-  transform-style: preserve-3d;
-  &:active .btn {
-    transform: translateZ(1px);
+
+  &__lining {
+    background: $baseColor;
+    border-radius: $btnRadius;
+    box-shadow: 0 $baseSize/-40 0px ($baseColor - #333) inset;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    width: $baseSize;
+    height: $baseSize/3;
   }
-  &:active .btn-side {
-    transform: translateZ(0);
-  }
-  &:focus {
+
+
+  &__bottom {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    transform-style: preserve-3d;
+    border: none;
     outline: none;
+    background: transparent;
+
+
+    &:active .btn__content {
+      transform: translateZ(1px);
+    }
+
+
+    &:active .btn__side {
+      transform: translateZ(0);
+    }
+
+    
+    &:focus {
+      outline: none;
+    }
+  }
+
+  
+  &__content {
+    background: $btnColor linear-gradient($btnColor*2, transparent 50%);
+    border-radius: $btnRadius;
+    box-shadow: 0 0 5px $btnColor*2 inset;
+    display: block;
+    font-weight: bold;
+    width: $btnSize;
+    height: $btnSize/4;
+    transform: translateZ($baseSize*0.15);
+    transition: all $transTime;
+    text-align: center;
+    text-shadow: 0 0 $baseSize/10 $logoColor, 0 $baseSize/-100 0 ($btnColor - #222), 0 $baseSize/100 0 ($logoColor + #333);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  
+  &__side {
+    background: ($btnColor - #111) linear-gradient(90deg, $btnColor+#222, transparent 8%, transparent 92%, $btnColor+#222);
+    border-radius: 0 0 $btnRadius*0.75 $btnRadius*0.75;
+    box-shadow: 0 $baseSize/-50 $baseSize/50 #222 inset;
+    position: absolute;
+    bottom: 0;
+    transform: rotateX(-70deg);
+    transform-origin: 0 100%;
+    transition: all $transTime;
+    width: $btnSize;
+    height: $btnSize * 0.18;
+    z-index: 1;
+  }
+
+
+  &__svg {
+    width: 100%;
+    height: 100%; 
+    fill: $logoColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
   
-/* Top of button */
-.btn {
-  background: $btnColor linear-gradient($btnColor*2, transparent 50%);
-  border-radius: $btnRadius;
-  box-shadow: 0 0 5px $btnColor*2 inset;
-  color: $txtColor;
-  display: block;
-  font: $btnSize*0.85 Asap;
-  font-weight: bold;
-  width: $btnSize;
-  height: $btnSize;
-  transform: translateZ($baseSize*0.15);
-  transition: all $transTime;
-  text-align: center;
-  text-shadow: 0 0 $baseSize/10 $txtColor, 0 $baseSize/-100 0 ($btnColor - #222), 0 $baseSize/100 0 ($txtColor + #333);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-  
-/* Shown side of button */
-.btn-side {
-  background: ($btnColor - #111) linear-gradient(90deg, $btnColor+#222, transparent 8%, transparent 92%, $btnColor+#222);
-  border-radius: 0 0 $btnRadius*0.75 $btnRadius*0.75;
-  box-shadow: 0 $baseSize/-50 $baseSize/50 #222 inset;
-  position: absolute;
-  bottom: 0;
-  transform: rotateX(-70deg);
-  transform-origin: 0 100%;
-  transition: all $transTime;
-  width: $btnSize;
-  height: $btnSize * 0.15;
-  z-index: 1;
-}

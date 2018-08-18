@@ -2,28 +2,50 @@
 <html>
 
   <head>
-    <title>Testing - Eleken</title>
+    <title>Oleksandr Kovaliuk - Jun FE</title>
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Open+Sans:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
     <link type="text/css" href="css/main.min.css" rel="stylesheet" media="screen">    
   </head>
 
-  <body>  
+  <body> 
     <div class="container">
-      <div class="base">
-        <div class="btn-wrapper">
-          <div class="btn-side"></div>
-          <div class="btn">
-            <svg fill='red' class="svg-icon-white header__svg svg-purchase">
-              <use xlink:href="svg/sprite.svg#icon-logo"></use>
-            </svg>
+      <div class="btn">
+          <div class="btn__lining">
+            <button class="btn__bottom js-btn__modal">
+              <div class="btn__side"></div>
+              <div class="btn__content">
+                <svg class="btn__svg" class="svg-icon-white header__svg svg-purchase">
+                  <use xlink:href="svg/sprite.svg#icon-logo"></use>
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
+    </div> 
+    
+    <div class="modal">
+      <div class="modal__close close">
+        <span class="close__item"></span>
+        <span class="close__item"></span>
+      </div>
+      <div class="modal__content">
+          <svg class="svg-icon-white header__svg svg-purchase">
+            <use xlink:href="svg/sprite.svg#icon-warning"></use>
+          </svg>
+
+          <h2 class="modal__title">
+            Are you sure you want to uninstall the Shazam app
+          </h2>
+          
+          <div class="modal__bottom">
+            <button class="modal__btn">Cancel</button>
+            <button class="modal__btn">Uninstall</button>
+          </div>
       </div>
     </div>
-    
 
     <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
     <script src="js/main.min.js" defer></script>
